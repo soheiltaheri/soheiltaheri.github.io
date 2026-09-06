@@ -132,6 +132,14 @@
     node, x: Number(node.getAttribute('cx')), y: Number(node.getAttribute('cy')),
   }));
   const guide = svg.querySelector('.inspection-guide');
+  const allPoints = [...marks.map(mark => mark.node), ...anchors];
+  const layouts = [
+    [[90,193],[145,70],[182,231],[260,109],[310,213],[352,59],[425,172],[505,45],[70,115],[220,61],[387,228],[492,132]],
+    [[120,100],[230,100],[340,100],[450,100],[120,156],[230,156],[340,156],[505,55],[450,156],[120,212],[230,212],[340,212]],
+    [[90,209],[145,191],[185,165],[250,184],[300,148],[340,123],[425,99],[505,55],[58,220],[216,178],[378,128],[518,58]],
+    [[90,209],[145,191],[185,165],[250,184],[300,148],[340,123],[425,99],[505,55],[58,220],[216,178],[378,128],[518,58]],
+  ];
+  const annotations = ['RAW / UNALIGNED', 'STRUCTURED / VALIDATED', 'RELATIONSHIPS / PATTERN', 'SIGNAL / SUMMARY'];
   const descriptions = [
     'Collect — Bring relevant sources into one analytical view.',
     'Clean — Standardize records and validate data quality.',
@@ -139,12 +147,32 @@
     'Communicate — Translate evidence into clear business decisions.',
   ];
   function selectStage(index) {
+    workflow.dataset.visualStage = String(index);
+    allPoints.forEach((point, i) => {
+      const [x, y] = layouts[index][i];
+      point.style.cx = `${x}px`;
+      point.style.cy = `${y}px`;
+      point.removeAttribute('transform');
+      if (i < marks.length) { marks[i].x = x; marks[i].y = y; }
+    });
     buttons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
-    anchors.forEach((point, i) => point.classList.toggle('is-selected', i === index));
-    guide.setAttribute('transform', `translate(${Number(anchors[index].getAttribute('cx')) - 58} 0)`);
+    anchors.forEach((point, i) => point.classList.toggle('is-selected', index === 2 || (index === 3 && i === 3)));
+    guide.setAttribute('transform', `translate(${index === 3 ? 460 : 158} 0)`);
+    svg.querySelector('.stage-annotation').textContent = annotations[index];
+    svg.querySelector('#workflow-desc').textContent = `${descriptions[index]} Conceptual illustration, not measured business data.`;
     readout.textContent = descriptions[index];
   }
-  buttons.forEach((button, index) => button.addEventListener('click', () => selectStage(index)));
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', () => selectStage(index));
+    button.addEventListener('keydown', event => {
+      const offsets = {ArrowRight: 1, ArrowLeft: -1};
+      if (!(event.key in offsets) && event.key !== 'Home' && event.key !== 'End') return;
+      event.preventDefault();
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? 3 : (index + offsets[event.key] + 4) % 4;
+      buttons[next].focus();
+      selectStage(next);
+    });
+  });
   controls.hidden = false;
   readout.hidden = false;
   selectStage(0);

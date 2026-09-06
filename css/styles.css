@@ -972,3 +972,43 @@ to {
 @media (prefers-reduced-motion: reduce) {
   .hero::after { display: none; }
 }
+
+/* Hero storytelling: the same marks progress from raw records to a clear signal. */
+.workflow .field-points circle, .workflow .data-points circle {
+  transition: cx 480ms ease, cy 480ms ease, opacity 300ms ease, fill 250ms ease;
+}
+.workflow .trend-line, .workflow .trend-area, .workflow .inspection-guide,
+.workflow .field-points, .workflow .data-points circle {
+  transition: opacity 350ms ease, cx 480ms ease, cy 480ms ease, fill 250ms ease;
+}
+.stage-structure, .stage-noise, .stage-pattern, .stage-insight {
+  opacity: 0; pointer-events: none; transition: opacity 350ms ease;
+}
+.stage-structure { fill: none; stroke: var(--accent); stroke-width: 1; stroke-dasharray: 2 7; }
+.stage-noise { fill: none; stroke: var(--muted); stroke-width: 1; }
+.stage-noise text, .stage-insight text, .stage-annotation { fill: var(--muted); stroke: none; font: 9px var(--mono); letter-spacing: .06em; }
+.stage-pattern { fill: var(--accent); fill-opacity: .04; stroke: var(--accent); stroke-opacity: .35; stroke-dasharray: 3 5; }
+.stage-insight { fill: none; stroke: var(--accent); stroke-width: 1; }
+.stage-insight text:first-of-type { fill: var(--accent); font-size: 11px; }
+.workflow[data-visual-stage="0"] .trend-line,
+.workflow[data-visual-stage="0"] .trend-area,
+.workflow[data-visual-stage="0"] .inspection-guide,
+.workflow[data-visual-stage="1"] .trend-line,
+.workflow[data-visual-stage="1"] .trend-area,
+.workflow[data-visual-stage="1"] .inspection-guide { opacity: 0; }
+.workflow[data-visual-stage="0"] .field-points,
+.workflow[data-visual-stage="1"] .field-points { opacity: .8; }
+.workflow[data-visual-stage="0"] .data-points circle { fill: var(--surface); }
+.workflow[data-visual-stage="1"] .stage-structure { opacity: .4; }
+.workflow[data-visual-stage="1"] .stage-noise { opacity: .8; }
+.workflow[data-visual-stage="1"] .field-points circle:last-child,
+.workflow[data-visual-stage="2"] .field-points circle:last-child { opacity: .15; }
+.workflow[data-visual-stage="2"] .stage-pattern { opacity: 1; }
+.workflow[data-visual-stage="3"] .field-points { opacity: .08; }
+.workflow[data-visual-stage="3"] .data-points circle:not(:last-child) { opacity: .25; }
+.workflow[data-visual-stage="3"] .stage-insight { opacity: 1; }
+.workflow[data-visual-stage="3"] .trend-area { opacity: .025; }
+.workflow[data-visual-stage="3"] .trend-line { stroke-width: 3; }
+@media (prefers-reduced-motion: reduce) {
+  .workflow *, .workflow *::before, .workflow *::after { transition: none !important; animation: none !important; }
+}

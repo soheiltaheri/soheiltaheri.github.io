@@ -11,10 +11,10 @@ Double-click `index.html`, or use your browser's Open File command. No Node.js, 
 ```text
 index.html          All content, semantic sections, metadata, inline workflow SVG
 css/styles.css      Design tokens, layouts, responsive and accessibility styles
-js/main.js          Optional mobile navigation and current footer year
+js/main.js          Mobile navigation, one-time data reveals, current year
 assets/projects/    Four real project PNGs copied from the existing portfolio
 assets/icons/       Local SVG favicon
-assets/resume/      Resume instructions; no fabricated PDF
+assets/resume/      Real resume PDF and replacement instructions
 ```
 
 ## Editing
@@ -25,7 +25,7 @@ The first migration reused `portfolio-website/data/portfolio.ts` and existing Ab
 
 ## Resume
 
-Place the real PDF at `assets/resume/Soheil-Taheri-Resume.pdf`. Replace the disabled resume button with a link to that relative path and a `download` attribute, then remove `#resume-note`. Full instructions are also in the resume directory.
+The Download Resume link is active at `assets/resume/Soheil-Taheri-Resume.pdf`. Replace that file with your updated PDF, keeping the filename unchanged. The HTML download attribute is set; browser handling can vary.
 
 ## Static hosting
 
@@ -37,6 +37,12 @@ Publish the contents of this folder on GitHub Pages, Netlify, or Vercel static h
 - Check menu toggle, Escape, anchor navigation, visible keyboard focus, and skip link.
 - Disable JavaScript and confirm navigation/content remain available.
 - Inspect real charts at full size and verify outbound repository links.
-- Review reduced-motion behavior and replace the resume placeholder when ready.
+- Review reduced-motion behavior and check the real resume download.
 
 The workflow curve is explicitly conceptual, not a measured KPI. No project screenshots or proficiency scores were invented.
+
+## Interaction enhancements
+
+The workflow line draws once when visible, real impact numbers reveal once, and featured project cards emphasize their result on hover or keyboard focus. No content is hidden behind these effects. Reduced-motion preferences skip animation, including when changed during a reveal. Without JavaScript, final numbers and the full workflow remain visible. Project links retain native keyboard behavior.
+
+An empty `.nojekyll` is included for GitHub Pages. All local URLs are relative to this directory and work under a repository subdirectory.

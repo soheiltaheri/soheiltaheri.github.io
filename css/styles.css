@@ -879,3 +879,43 @@ to {
 
 }
 
+
+/* Analytical emphasis: content is always visible, including without JavaScript. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.metric-value { display: inline-block; }
+.featured-grid .project-card {
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+.featured-grid .result {
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.featured-grid .project-card:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+}
+.featured-grid .project-card:focus-within .result {
+  box-shadow: inset 2px 0 var(--accent);
+}
+@media (hover: hover) and (pointer: fine) {
+  .featured-grid .project-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+  }
+  .featured-grid .project-card:hover .result {
+    box-shadow: inset 2px 0 var(--accent);
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .featured-grid .project-card:hover,
+  .featured-grid .project-card:focus-within { transform: translateY(-2px); }
+}

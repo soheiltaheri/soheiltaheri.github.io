@@ -46,3 +46,11 @@ The workflow curve is explicitly conceptual, not a measured KPI. No project scre
 The workflow line draws once when visible, real impact numbers reveal once, and featured project cards emphasize their result on hover or keyboard focus. No content is hidden behind these effects. Reduced-motion preferences skip animation, including when changed during a reveal. Without JavaScript, final numbers and the full workflow remain visible. Project links retain native keyboard behavior.
 
 An empty `.nojekyll` is included for GitHub Pages. All local URLs are relative to this directory and work under a repository subdirectory.
+
+## Signature analytical experience
+
+The hero has 12 fixed conceptual marks. Four native buttons inspect Collect, Clean, Analyze, and Communicate stages; these also work with keyboard and touch. On a fine pointer above 900px, nearby supporting marks shift by at most three SVG units and a local mask reveals the existing hero grid. No measured data is implied. Pointer work is frame-batched, geometry is cached, and no animation loop runs while idle. Reduced motion disables the pointer field and background response; stage selection remains immediate.
+
+Featured projects keep their real Problem, Approach, and Result content visible in a connected Data Lens treatment. Hover and keyboard focus emphasize the result. Wide screens (1400px+) show a small reading-path indicator; narrower screens omit it. Axis details are decorative and encode no additional statistics.
+
+Validation covered 390px, 768px, and 1440px with no horizontal overflow, stage selection, mobile navigation, project keyboard focus, relative local references, and unchanged resume bytes. Reduced-motion mode was checked in Chrome. Review the pointer feel manually: headless virtual-time execution did not reliably advance pointer animation frames.

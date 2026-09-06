@@ -65,6 +65,13 @@
 </g>
 <path class="trend-area" d="M58 220 C130 211 145 168 216 178 S320 110 378 128 S465 70 518 58 L518 254 L58 254 Z"/>
 <path class="trend-line" d="M58 220 C130 211 145 168 216 178 S320 110 378 128 S465 70 518 58"/>
+<g class="field-points" aria-hidden="true">
+<circle cx="90" cy="193" r="3"/><circle cx="132" cy="214" r="3"/>
+<circle cx="175" cy="151" r="3"/><circle cx="252" cy="195" r="3"/>
+<circle cx="292" cy="139" r="3"/><circle cx="338" cy="161" r="3"/>
+<circle cx="424" cy="91" r="3"/><circle cx="475" cy="116" r="3"/>
+</g>
+<g class="inspection-guide" aria-hidden="true"><path d="M58 40V254"/></g>
 <g class="data-points">
 <circle cx="58" cy="220" r="5"/>
 <circle cx="216" cy="178" r="5"/>
@@ -78,6 +85,13 @@
 <text x="456" y="280">COMMUNICATE</text>
 </g>
 </svg>
+<div class="workflow-controls" role="group" aria-label="Explore the analytics workflow" hidden>
+<button type="button" data-stage="0" aria-pressed="true">01 Collect</button>
+<button type="button" data-stage="1" aria-pressed="false">02 Clean</button>
+<button type="button" data-stage="2" aria-pressed="false">03 Analyze</button>
+<button type="button" data-stage="3" aria-pressed="false">04 Communicate</button>
+</div>
+<p class="workflow-readout" aria-live="polite" hidden>Collect &mdash; Bring relevant sources into one analytical view.</p>
 <figcaption>
 <span class="dot">
 </span> Evidence before narrative <span>Conceptual process</span>
@@ -207,6 +221,7 @@
 <p class="eyebrow">01 / APPLIED ANALYTICS</p>
 <h3>AI-Powered Business Performance Analyst</h3>
 <p>End-to-end analytics application for campaign and business performance data.</p>
+<p class="lens-label" aria-hidden="true"><span>DATA LENS</span><span>PROBLEM / METHOD / RESULT</span></p>
 <dl class="project-details">
 <dt>Problem</dt>
 <dd>Turn structured performance data into reliable management-ready findings without letting an LLM become the numerical source of truth.</dd>
@@ -240,6 +255,7 @@
 <p class="eyebrow">02 / CUSTOMER ANALYTICS</p>
 <h3>Customer Analytics — RFM &amp; Cohort Retention</h3>
 <p>Customer segmentation, revenue concentration, and retention analysis translated into business recommendations.</p>
+<p class="lens-label" aria-hidden="true"><span>DATA LENS</span><span>PROBLEM / METHOD / RESULT</span></p>
 <dl class="project-details">
 <dt>Problem</dt>
 <dd>Identify valuable customer groups and understand how repeat behavior changes after acquisition.</dd>
@@ -270,6 +286,7 @@
 <p class="eyebrow">03 / EXCEL ANALYTICS</p>
 <h3>Excel Bike Purchase Analytics</h3>
 <p>Interactive Excel analysis of customer characteristics and bike-purchase behavior.</p>
+<p class="lens-label" aria-hidden="true"><span>DATA LENS</span><span>PROBLEM / METHOD / RESULT</span></p>
 <dl class="project-details">
 <dt>Problem</dt>
 <dd>Clean customer records and make purchase patterns accessible through a recruiter-readable dashboard.</dd>
@@ -302,6 +319,7 @@
 <p class="eyebrow">04 / SQL QUALITY</p>
 <h3>Nashville Housing SQL Cleanup</h3>
 <p>Auditable MySQL cleaning and validation workflow for housing transactions.</p>
+<p class="lens-label" aria-hidden="true"><span>DATA LENS</span><span>PROBLEM / METHOD / RESULT</span></p>
 <dl class="project-details">
 <dt>Problem</dt>
 <dd>Correct inconsistent categories, missing addresses, composite fields, and duplicate transaction records while preserving raw data.</dd>
@@ -502,6 +520,11 @@
 </div>
 </section>
 </main>
+<aside class="analysis-journey" aria-label="Portfolio reading journey" hidden>
+<span class="journey-caption">READING PATH</span>
+<span data-journey="0">Collect</span><span data-journey="1">Clean</span>
+<span data-journey="2">Analyze</span><span data-journey="3">Communicate</span>
+</aside>
 <footer class="shell footer">
 <p>&copy; <span id="year">2026</span> Soheil Taheri</p>
 <p>Data Analyst <span aria-hidden="true">&middot;</span> Evidence before narrative</p>

@@ -919,3 +919,56 @@ to {
   .featured-grid .project-card:hover,
   .featured-grid .project-card:focus-within { transform: translateY(-2px); }
 }
+
+/* Signature data field: fixed SVG marks, not a generated particle system. */
+.hero { isolation: isolate; }
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(rgb(140 207 193 / 15%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(140 207 193 / 15%) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(180px circle at var(--grid-x, 75%) var(--grid-y, 45%), #000, transparent);
+  opacity: 0; transition: opacity 300ms ease;
+}
+.hero.grid-inspecting::after { opacity: 1; }
+.field-points { fill: var(--accent); opacity: .45; }
+.field-points circle { transition: fill 250ms ease, opacity 250ms ease; }
+.field-points circle.is-near { fill: var(--text); opacity: 1; }
+.inspection-guide { stroke: var(--accent); stroke-width: 1; stroke-dasharray: 2 6; opacity: .35; }
+.data-points circle.is-selected { fill: var(--accent); stroke: var(--text); }
+.workflow-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .35rem; margin-top: .5rem; }
+.workflow-controls button {
+  min-width: 0; min-height: 44px; padding: .4rem .15rem; cursor: pointer;
+  border: 0; border-bottom: 1px solid var(--border); background: transparent;
+  color: var(--muted); font: .64rem/1.5 var(--mono);
+}
+.workflow-controls button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.workflow-readout { min-height: 4.5em; margin: .9rem .5rem .3rem; color: var(--muted); font: .75rem/1.5 var(--mono); }
+/* Existing project information becomes a connected analytical reading surface. */
+.lens-label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .4rem; width: 100%; margin-top: 1.5rem; padding-top: .75rem; border-top: 1px solid var(--border); font: .62rem/1.6 var(--mono); letter-spacing: .04em; }
+.project-body > .lens-label { color: var(--accent) !important; font-size: .62rem !important; }
+.featured-grid .project-details { position: relative; padding-left: 1rem; border-left: 1px solid var(--border); transition: border-color 200ms ease; }
+.featured-grid .project-details dt { color: var(--accent); }
+.featured-grid .result { position: relative; transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease; }
+.featured-grid .result::before { content: ""; position: absolute; width: 5px; height: 5px; background: var(--accent); left: -3px; top: -3px; }
+.featured-grid .project-card:focus-within .project-details { border-color: var(--accent); }
+.featured-grid .project-card:focus-within .result { background: #2b4c44; box-shadow: inset 3px 0 var(--accent); }
+.featured-grid .project-card:focus-within .lens-label { border-color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+  .featured-grid .project-card:hover .project-details,
+  .featured-grid .project-card:hover .lens-label { border-color: var(--accent); }
+  .featured-grid .project-card:hover .result { background: #2b4c44; box-shadow: inset 3px 0 var(--accent); }
+}
+.impact-item::after { content: ""; display: block; height: 5px; margin-top: 1rem; border-top: 1px solid var(--border); background: repeating-linear-gradient(90deg,var(--border) 0 1px,transparent 1px 24px); }
+#about .section-heading, #projects .section-heading, #education .section-heading { border-left: 1px solid var(--border); padding-left: 1rem; }
+.analysis-journey { display: none; }
+@media (min-width: 1400px) {
+  .analysis-journey { display: flex; flex-direction: column; gap: 1rem; position: fixed; right: .6rem; top: 44%; width: 82px; pointer-events: none; font: .56rem/1.5 var(--mono); color: var(--muted); }
+  .journey-caption { font-size: .5rem; letter-spacing: .05em; }
+  .analysis-journey [data-journey] { border-left: 1px solid var(--border); padding-left: .5rem; }
+  .analysis-journey [aria-current="step"] { border-color: var(--accent); color: var(--accent); }
+}
+@media (max-width: 480px) { .workflow-controls button { font-size: .59rem; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero::after { display: none; }
+}
